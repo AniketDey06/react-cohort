@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { Counter } from "./Order";
 import { AllBooksList } from "./AllBooks";
 
 export function App(){
@@ -18,6 +19,7 @@ export function App(){
             <h1>Welcome to react</h1>
             <p>tring vite from scretch</p>
             <h2>{msg}</h2>
+            <Counter/>
             <AllBooksList />
         </div>
     )

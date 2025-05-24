@@ -17,7 +17,7 @@ export function AllBooksList() {
             <h2>Available Books</h2>
             <ul>
                 {books.map(book => (
-                    <li>{book.id} - <b>{book.volumeInfo.title}</b> </li>
+                    <li key={book.id}><b>{book.volumeInfo.title}</b> </li>
                 ))}
             </ul>
         </div>

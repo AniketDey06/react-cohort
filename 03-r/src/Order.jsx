@@ -7,11 +7,16 @@ export function Counter(){
         setCount(prev => prev + 1)
     }
 
+    const decreseCount = () => {
+        setCount(prev => prev - 1)
+    }
+
     return(
         <div>
             <h2>Counter</h2>
             <p>Count is: {count}</p>
             <button onClick={increseCount}>Count++</button>
+            <button onClick={decreseCount}>Count--</button>
         </div>
     )
 }
