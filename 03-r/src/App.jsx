@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react"
+import { AllBooksList } from "./AllBooks";
 
 export function App(){
-    const [msg, setMsg] = useState("loading");
+    const [msg, setMsg] = useState(1);
 
     useEffect(() => {
         fetch("https://api.freeapi.app/api/v1/public/quotes/quote/random")
@@ -10,11 +11,14 @@ export function App(){
             .catch(() => setMsg("no quote found"));
     }, [])
 
+    // setMsg(prev => prev + 1)
+
     return (
         <div>
             <h1>Welcome to react</h1>
             <p>tring vite from scretch</p>
             <h2>{msg}</h2>
+            <AllBooksList />
         </div>
     )
 }
