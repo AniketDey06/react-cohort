@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react"
 import { Counter } from "./Order";
 import { AllBooksList } from "./AllBooks";
+import { useRandomBook } from "./hooks/useRandomBook";
 
 export function App(){
+    // const {book, loading, error} = useRandomBook()
     const [msg, setMsg] = useState(1);
 
     useEffect(() => {
@@ -12,7 +14,8 @@ export function App(){
             .catch(() => setMsg("no quote found"));
     }, [])
 
-    // setMsg(prev => prev + 1)
+    // if(loading) return <h2>Loading...</h2>
+    // if(error) return <h2>Error...: {error}</h2>
 
     return (
         <div>
@@ -21,6 +24,7 @@ export function App(){
             <h2>{msg}</h2>
             <Counter/>
             <AllBooksList />
+            {/* <h3>{book.data.volumeInfo.title}</h3> */}
         </div>
     )
 }
