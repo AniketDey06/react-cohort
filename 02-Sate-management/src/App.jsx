@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Navbar from './components/Navbar'
+import { data } from 'autoprefixer'
 
 
 function App() {
@@ -25,6 +26,8 @@ function App() {
   //     alert("component was unmounted")
   //   }
   // }, [])
+
+ 
 
 
 
@@ -68,14 +71,14 @@ function App() {
 
   return (
     <>
-      {showBtn && <button onClick={() => { setCount(count + 1) }}>Click</button>}
+      {/* {showBtn && <button onClick={() => { setCount(count + 1) }}>Click</button>}
       <Navbar color={"navy" + "blue"} />
-      <div>This Count is : {count}</div>
+      <div>This Count is : {count}</div> */}
 
       {/* <button onClick={() => { setCount(count + 1) }}>Click</button> */}
       <button onClick={() => { setshowBtn(!showBtn) }}>Click</button>
 
-      {todos.map(todo => {
+      {/* {todos.map(todo => {
         // return <Todo key={todo.title} todo={todo} />
           return (
             <div className='m-4 border border-1 border-purple-400' key={todo.title}>
@@ -84,7 +87,7 @@ function App() {
             </div>
           )
         }
-      )}
+      )} */}
 
 
     </>
