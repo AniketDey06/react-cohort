@@ -5,17 +5,19 @@ import './App.css'
 
 function App() {
   const [cards, setCards] = useState([])
+  const [showbtn, setShowbtn] = useState(false)
 
   const fetchData = async () => {
     const a = await fetch("https://jsonplaceholder.typicode.com/posts").then(console.log("data fetcheing"))
     const data = await a.json()
     console.log(data);
+
     setCards(data)
   }
 
-  useEffect(() => {
-    
-  }, [])
+  // useEffect(() => {
+
+  // }, [])
 
   return (
     <>
@@ -39,7 +41,9 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p> */}
-
+      <button onClick={() => { fetchData(), setShowbtn(!showbtn) }}>
+        get data
+      </button>
       <div className="container flex flex-wrap gap-4">
         {cards.map((card) => {
           return (
@@ -51,9 +55,7 @@ function App() {
           )
         })}
       </div>
-      <button onClick={() => fetchData()}>
-        click
-      </button>
+
     </>
   )
 }
