@@ -2,22 +2,20 @@ import { useState, useEffect, useRef } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Card from './components/Card'
 
 function App() {
-  const [cards, setCards] = useState([])
-  const [showbtn, setShowbtn] = useState(false)
+  // const [cards, setCards] = useState([])
+  // const [showbtn, setShowbtn] = useState(false)
 
-  const fetchData = async () => {
-    const a = await fetch("https://jsonplaceholder.typicode.com/posts").then(console.log("data fetcheing"))
-    const data = await a.json()
-    console.log(data);
+  // const fetchData = async () => {
+  //   const a = await fetch("https://jsonplaceholder.typicode.com/posts").then(console.log("data fetcheing"))
+  //   const data = await a.json()
+  //   console.log(data);
 
-    setCards(data)
-  }
+  //   setCards(data)
+  // }
 
-  // useEffect(() => {
-
-  // }, [])
 
   return (
     <>
@@ -41,7 +39,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p> */}
-      <button onClick={() => { fetchData(), setShowbtn(!showbtn) }}>
+      {/* <button onClick={() => { fetchData(), setShowbtn(!showbtn) }}>
         get data
       </button>
       <div className="container flex flex-wrap gap-4">
@@ -54,8 +52,9 @@ function App() {
             </div>
           )
         })}
-      </div>
+      </div> */}
 
+      <Card name="aniket" pera="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium, commodi." />
     </>
   )
 }
