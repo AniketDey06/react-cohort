@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import { useForm } from "react-hook-form"
 import './App.css'
 import Card from './components/Card'
 
@@ -15,10 +16,29 @@ function App() {
 
   //   setCards(data)
   // }
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm()
 
+  const onSubmit = (data) => console.log(data)
+  
 
   return (
     <>
+      <div>
+        <form action="" onSubmit={handleSubmit(onSubmit)}>
+          <input type="text" {...register("username", {required: true, minLength: 4, maxLength: 8})} className='bg-black'/>
+          {errors.username && <div className='text-red-500'>something wrong</div>}
+          <br />
+          <input type="text" {...register("password", {required: true, minLength:4, maxLength: 8})}  className='bg-black'/>
+          {errors.password && <div className='text-red-500'>fix password</div>}
+          <br />
+          <input type="submit" value="submit" className='bg-black'/>
+        </form>
+      </div>
       {/* <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -54,7 +74,7 @@ function App() {
         })}
       </div> */}
 
-      <Card name="aniket" pera="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium, commodi." />
+      {/* <Card name="aniket" pera="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium, commodi." /> */}
     </>
   )
 }
