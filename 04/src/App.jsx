@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, use } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -7,16 +7,37 @@ import Login from './components/Login'
 import Logout from './components/Logout'
 
 function App() {
-  const [name, setName] = useState('')
-  const [isLogedin, setisLogedin] = useState(0)
+  // const [name, setName] = useState('')
+  // const [isLogedin, setisLogedin] = useState(0)
+
+  // const handleClick = () => {
+  //   setisLogedin(!isLogedin)
+  // }
+
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    alert("1st render")
+  },[])
+  
+  useEffect(() => {
+    alert("Count updated")
+    
+    return() => {
+      alert("Count remove")
+    }
+  }, [count])
 
   const handleClick = () => {
-    setisLogedin(!isLogedin)
+    setCount(count + 1)
   }
+  
 
   return(
     <>
-      {isLogedin? <Logout click={handleClick}/>: <Login click={handleClick}/>}
+      <h1>{count}</h1>
+      <button onClick={handleClick}>Click</button>
+      {/* {isLogedin? <Logout click={handleClick}/>: <Login click={handleClick}/>} */}
     </>
   )
 
