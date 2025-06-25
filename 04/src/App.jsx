@@ -8,7 +8,7 @@ import Logout from './components/Logout'
 
 function App() {
   const [name, setName] = useState('')
-  const [isLogedin, setisLogedin] = useState(true)
+  const [isLogedin, setisLogedin] = useState(0)
 
   const handleClick = () => {
     setisLogedin(!isLogedin)
