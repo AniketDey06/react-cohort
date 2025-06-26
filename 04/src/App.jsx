@@ -5,6 +5,9 @@ import './App.css'
 import Card from './components/Card'
 import Login from './components/Login'
 import Logout from './components/Logout'
+import ChildA from './components/ChildA'
+
+const UserContext = createContext()
 
 function App() {
   // const [name, setName] = useState('')
@@ -14,31 +17,35 @@ function App() {
   //   setisLogedin(!isLogedin)
   // }
 
-  const [count, setCount] = useState(0)
+  // const [count, setCount] = useState(0)
 
-  useEffect(() => {
-    alert("1st render")
-  },[])
-  
-  useEffect(() => {
-    alert("Count updated")
-    
-    return() => {
-      alert("Count remove")
-    }
-  }, [count])
+  // useEffect(() => {
+  //   alert("1st render")
+  // },[])
 
-  createContext()
+  // useEffect(() => {
+  //   alert("Count updated")
 
-  const handleClick = () => {
-    setCount(count + 1)
-  }
-  
+  //   return() => {
+  //     alert("Count remove")
+  //   }
+  // }, [count])
 
-  return(
+  // const handleClick = () => {
+  //   setCount(count + 1)
+  // }
+
+  const [user, setUser] = useState({ name: "Aniket" })
+
+
+  return (
     <>
-      <h1>{count}</h1>
-      <button onClick={handleClick}>Click</button>
+      <UserContext.Provider value={user}>
+
+        <ChildA />
+      </UserContext.Provider>
+      {/* <h1>{count}</h1>
+      <button onClick={handleClick}>Click</button> */}
       {/* {isLogedin? <Logout click={handleClick}/>: <Login click={handleClick}/>} */}
     </>
   )
@@ -63,3 +70,4 @@ function App() {
 }
 
 export default App
+export { UserContext }
