@@ -6,6 +6,8 @@ import Card from './components/Card'
 import Login from './components/Login'
 import Logout from './components/Logout'
 import ChildA from './components/ChildA'
+import Home from './components/Home'
+import About from './components/About'
 
 const UserContext = createContext()
 
