@@ -9,8 +9,8 @@ import ChildA from './components/ChildA'
 import Home from './components/Home'
 import About from './components/About'
 
-// const UserContext = createContext()
-const ThemeContext  = createContext()
+const UserContext = createContext()
+const ThemeContext = createContext()
 
 function App() {
   // const [name, setName] = useState('')
@@ -38,22 +38,19 @@ function App() {
   //   setCount(count + 1)
   // }
 
-  // const [user, setUser] = useState({ name: "Aniket" })
+  const [user, setUser] = useState({ name: "Aniket" })
 
   const [theme, setTheme] = useState('light')
 
   return (
     <>
-      <ThemeContext.Provider value={{theme, setTheme}}>
-        <div id="container" style={{backgroundColor: theme==='light'? "beige": "black"}}>
-          <ChildA />
-        </div>
-      </ThemeContext.Provider>
-
-      {/* <UserContext.Provider value={user}>
-
-        <ChildA />
-      </UserContext.Provider> */}
+      <UserContext.Provider value={user}>
+        <ThemeContext.Provider value={{ theme, setTheme }}>
+          <div id="container" style={{ backgroundColor: theme === 'light' ? "beige" : "black" }}>
+            <ChildA />
+          </div>
+        </ThemeContext.Provider>
+      </UserContext.Provider>
       {/* <h1>{count}</h1>
       <button onClick={handleClick}>Click</button> */}
       {/* {isLogedin? <Logout click={handleClick}/>: <Login click={handleClick}/>} */}
@@ -80,4 +77,4 @@ function App() {
 }
 
 export default App
-export { ThemeContext }
+export { UserContext, ThemeContext }
