@@ -1,4 +1,5 @@
 import React from 'react'
+import './Navbar.css'
 
 import { Link, NavLink } from 'react-router-dom'
 
@@ -12,12 +13,12 @@ const Navbar = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to='/about'>
+                    <NavLink to='/about' className={({isActive}) => isActive ? "active-link" : ""}>
                         About
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to='/dashboard'>
+                    <NavLink to='/dashboard' className={({isActive}) => isActive ? "active-link" : ""}>
                         Dashboard
                     </NavLink>
                 </li>
