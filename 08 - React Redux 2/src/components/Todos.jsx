@@ -13,7 +13,7 @@ const Todos = () => {
             </div>
             {todos.map((todo) => (
                 <li className='todo-item' key={todo.id}>
-                    <div>{todo.text}</div>
+                    {todo.text}
                     <button onClick={() => dispatch(removeTodo(todo.id))}>X</button>
                 </li>
             ))}

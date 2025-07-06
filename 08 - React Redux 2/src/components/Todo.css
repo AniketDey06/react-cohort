@@ -1,3 +1,6 @@
 .todo-item{
     display: flex;
+    align-items: center;
+    justify-self: center;
+    gap: 15px;
 }
