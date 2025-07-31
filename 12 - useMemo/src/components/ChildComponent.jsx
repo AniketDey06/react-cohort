@@ -6,7 +6,7 @@ const ChildComponent = React.memo(
 
         return (
             <div>
-                <button onClick={props.handleClick}>
+                <button onClick={() => props.handleClick}>
                     {props.buttonName}
                 </button>
             </div>

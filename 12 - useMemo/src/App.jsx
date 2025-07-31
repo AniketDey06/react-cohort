@@ -1,50 +1,24 @@
 import { useState, useMemo, useCallback } from 'react'
 import './App.css'
 import ChildComponent from './components/ChildComponent'
+import Navbar from './components/Navbar'
 
 function App() {
   const [count, setCount] = useState(0)
-  const [input, setInput] = useState(0)
+  const [word, setWord] = useState('cool')
 
-  // useMemo(() => task(input), [input])
+  const chWord = useCallback(() => {
+    // setWord(count)
+    return "another" + count
+  }, [])
 
-  // function task(num){
-  //   console.log("inside task");
-  //   for (let i = 0; i < 1000000000; i++) {}
-  //   return num*2
-  // }
-
-  // let val = useMemo(() => task(input), [input])
-
-  const handleClick = useCallback(() => {
-    setCount(count + 1)
-  }, [count]);
 
   return (
-    <>
+    <div>
+      <Navbar word={word} chWord={chWord} />
       <h1>Count: {count}</h1>
-      <button onClick={handleClick}>Increment</button>
-      <br />
-      <br />
-      <div>
-        <ChildComponent buttonName='click me 2' onClick={handleClick} />
-      </div>
-
-      {/* <button onClick={() => {setCount(count+1)}}>Increment</button>
-      <div> 
-        Count: {count}
-      </div>
-
-      <input 
-        type="number" 
-        placeholder='enter number'
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-      />
-
-      <div>{val}</div> */}
-
-    </>
+      <button onClick={() => setCount(count + 1)}>Click</button>
+    </div>
   )
 }
 
