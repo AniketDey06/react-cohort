@@ -1,11 +1,13 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import axios from 'axios'
 import { Nav, Footer, Card } from './components/Index'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [data, setData] = useState([])
 
   const users =
     [
@@ -71,17 +73,39 @@ function App() {
       },
     ]
 
+  const getData = async () => {
+    const response = await axios.get('https://picsum.photos/v2/list')
+    console.log(response);
+    setData(response.data)
+  }
+
+  useEffect(() => {
+    getData()
+
+
+  }, [])
+
 
   return (
     <>
       <Nav />
-      <div className='m-4 flex flex-wrap gap-5 justify-center'>
+      <div className='p-5 flex flex-wrap gap-5 justify-center'>
+        {/* <button className='bg-teal-700 text-white font-semibold text-2xl px-6 py-3 rounded m-3 active:scale-95 transition' onClick={getData}>Get Data</button> */}
+      </div>
+      <div className='p-5 flex flex-wrap gap-5 justify-center'>
+        {
+          data.map((ele, idx) => {
+            return <img className='h-50 rounded-lg' key={ele.id} src={ele.download_url} alt="" />
+          })
+        }
+      </div>
+      {/* <div className='m-4 flex flex-wrap gap-5 justify-center'>
         {users.map((user) => {
           return <Card uName={user.UserName} age={user.Age} skills={user.Skills} img={user.Image}/>
         })}
         
-      </div>
-      <Footer />
+      </div> */}
+      {/* <Footer /> */}
     </>
   )
 }
