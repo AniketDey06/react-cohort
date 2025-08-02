@@ -7,14 +7,19 @@ import Chuser from './chuser'
 import FromCom from './FromCom'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
+import Card from './components/Card'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <Nav/>
-      <Footer/>
+      <Nav />
+      <div className='m-4 flex gap-5 justify-center'>
+        <Card uName="aniket" age="24" skills="js"/>
+        <Card uName="Aniket Dey" age="242" skills="js2"/>
+      </div>
+      <Footer />
       {/* <Chuser />
       <FromCom/> */}
       {/* <h1 className='text-2xl text-blue-50 font-bold'>{count}</h1>
