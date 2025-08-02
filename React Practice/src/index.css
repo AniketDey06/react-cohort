@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+/* "w-full h-screen bg-zinc-900 flex flex-col items-center justify-center text-center" */
+
+body{
+    height: 100vh;
+    width: 100%;
+    background: #18181B;
+}
