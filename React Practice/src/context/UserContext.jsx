@@ -4,11 +4,15 @@ import { createContext } from 'react'
 export const DataContext = createContext()
 
 const UserContext = ({ children }) => {
-    const userName = "aniket"
+    const userData = {
+        userName: 'Aniket Dey',
+        age: 69,
+        city: "Kolkata"
+    }
 
     return (
         <div>
-            <DataContext.Provider value={userName}>
+            <DataContext.Provider value={userData}>
                 {children}
             </DataContext.Provider>
         </div>
