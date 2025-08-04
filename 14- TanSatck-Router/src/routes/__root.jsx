@@ -13,6 +13,9 @@ function RootComponent() {
             <Link to="/" className='[&.active]:font-bold'>
                 Home
             </Link>{" "}
+            <Link to="/app" className='[&.active]:font-bold'>
+                App
+            </Link>{" "}
             <Link to="/about" className='[&.active]:font-bold'>
                 About
             </Link>{" "}
@@ -20,7 +23,7 @@ function RootComponent() {
                 Products
             </Link>{" "}
             <hr />
-            <Outlet />
+            <Outlet /> 
             <TanStackRouterDevtools />
         </React.Fragment>
     )

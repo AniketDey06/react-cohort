@@ -12,7 +12,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ProductsRouteImport } from './routes/Products'
+import { Route as AppRouteRouteImport } from './routes/app/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppDashboardRouteImport } from './routes/app/dashboard'
 import { Route as ProductPidRouteImport } from './routes/Product.$pid'
 
 const ContactRoute = ContactRouteImport.update({
@@ -30,10 +32,20 @@ const ProductsRoute = ProductsRouteImport.update({
   path: '/Products',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppRouteRoute = AppRouteRouteImport.update({
+  id: '/app',
+  path: '/app',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AppDashboardRoute = AppDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AppRouteRoute,
 } as any)
 const ProductPidRoute = ProductPidRouteImport.update({
   id: '/Product/$pid',
@@ -43,36 +55,65 @@ const ProductPidRoute = ProductPidRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/app': typeof AppRouteRouteWithChildren
   '/Products': typeof ProductsRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/Product/$pid': typeof ProductPidRoute
+  '/app/dashboard': typeof AppDashboardRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/app': typeof AppRouteRouteWithChildren
   '/Products': typeof ProductsRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/Product/$pid': typeof ProductPidRoute
+  '/app/dashboard': typeof AppDashboardRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/app': typeof AppRouteRouteWithChildren
   '/Products': typeof ProductsRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/Product/$pid': typeof ProductPidRoute
+  '/app/dashboard': typeof AppDashboardRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/Products' | '/about' | '/contact' | '/Product/$pid'
+  fullPaths:
+    | '/'
+    | '/app'
+    | '/Products'
+    | '/about'
+    | '/contact'
+    | '/Product/$pid'
+    | '/app/dashboard'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/Products' | '/about' | '/contact' | '/Product/$pid'
-  id: '__root__' | '/' | '/Products' | '/about' | '/contact' | '/Product/$pid'
+  to:
+    | '/'
+    | '/app'
+    | '/Products'
+    | '/about'
+    | '/contact'
+    | '/Product/$pid'
+    | '/app/dashboard'
+  id:
+    | '__root__'
+    | '/'
+    | '/app'
+    | '/Products'
+    | '/about'
+    | '/contact'
+    | '/Product/$pid'
+    | '/app/dashboard'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AppRouteRoute: typeof AppRouteRouteWithChildren
   ProductsRoute: typeof ProductsRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
@@ -102,12 +143,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app': {
+      id: '/app'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof AppRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/app/dashboard': {
+      id: '/app/dashboard'
+      path: '/dashboard'
+      fullPath: '/app/dashboard'
+      preLoaderRoute: typeof AppDashboardRouteImport
+      parentRoute: typeof AppRouteRoute
     }
     '/Product/$pid': {
       id: '/Product/$pid'
@@ -119,8 +174,21 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AppRouteRouteChildren {
+  AppDashboardRoute: typeof AppDashboardRoute
+}
+
+const AppRouteRouteChildren: AppRouteRouteChildren = {
+  AppDashboardRoute: AppDashboardRoute,
+}
+
+const AppRouteRouteWithChildren = AppRouteRoute._addFileChildren(
+  AppRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AppRouteRoute: AppRouteRouteWithChildren,
   ProductsRoute: ProductsRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
